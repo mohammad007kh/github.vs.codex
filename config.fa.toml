@@ -1,0 +1,23 @@
+# پیکربندی Codex CLI — نسخه فارسی راهنما
+# https://github.com/openai/codex
+
+[model]
+name = "codex-1"
+temperature = 0.2
+
+[context]
+# Codex به‌صورت خودکار AGENTS.md را می‌خواند — نیازی به مشخص کردن اینجا نیست
+skills_dir = ".agents"        # پوشه مهارت‌های جهانی
+agents_dir = ".codex/agents"  # پوشه زیر-ایجنت‌های Codex
+
+[sandbox]
+# Codex به‌طور پیش‌فرض در یک sandbox ابری ایزوله اجرا می‌شود
+# این تنظیمات برای حالت محلی Codex CLI اعمال می‌شوند
+allow_shell = true
+allow_file_write = true
+confirm_before_delete = true  # قبل از حذف تایید بگیر
+
+[output]
+# نحوه تحویل نتایج توسط Codex
+prefer_pull_request = false   # برای گردش‌کارهای ابری ناهمزمان true کنید
+commit_message_style = "conventional"   # conventional | descriptive | short

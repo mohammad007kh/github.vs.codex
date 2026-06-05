@@ -1,0 +1,27 @@
+# زیر-ایجنت Codex: پژوهشگر
+# معادل Codex برای فایل .claude/skills/research.md
+
+[agent]
+name = "researcher"
+description = "موضوعات، کتابخانه‌ها یا APIها را قبل از تصمیمات پیاده‌سازی بررسی می‌کند."
+
+[trigger]
+# مسیریابی صریح — Codex نیاز دارد این ایجنت را با نام صدا بزنید یا به آن مسیر دهید
+keywords = ["research", "investigate", "compare", "tradeoffs", "best library for",
+            "پژوهش", "بررسی", "مقایسه", "مزایا و معایب", "بهترین کتابخانه"]
+
+[behavior]
+use_web_search = true    # جستجوی وب فعال
+save_findings = true     # یافته‌ها را ذخیره کن
+findings_path = "docs/research"
+
+[output]
+format = """
+## پژوهش: {topic}
+
+**سوال:** {question}
+**توصیه:** {recommendation}
+**دلیل:** {rationale}
+**گزینه‌های بررسی‌شده:** {alternatives}
+**منابع:** {sources}
+"""

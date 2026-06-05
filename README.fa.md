@@ -5,13 +5,13 @@
 
 > **مطالعه به زبان دیگر:** [English](./README.md)
 
-این مخزن یک پیاده‌سازی مرجع و راهنمای آموزشی است برای ساختاردهی پروژه‌هایی که هم با **Claude Code** و هم با **OpenAI Codex** بدون تکرار منطق یا وابستگی به یک ابزار، به‌درستی کار می‌کنند.
+این مخزن یک پیاده‌سازی مرجع و راهنمای آموزشی است برای ساختاردهی پروژه‌هایی که هم با **Claude Code** و هم با **OpenAI Codex** — بدون تکرار منطق یا وابستگی به یک ابزار — به‌درستی کار می‌کنند.
 
 ---
 
 ## 🧠 ایده اصلی
 
-اکثر توسعه‌دهندگان زمینه پروژه‌شان را *برای یک ایجنت* می‌نویسند. وقتی ابزار عوض می‌شود، از صفر شروع می‌کنند. این مخزن نشان می‌دهد چطور **یک بار بنویسید** و هر ایجنت هوش مصنوعی آن را بفهمد.
+اکثر توسعه‌دهندگان زمینه پروژه‌شان را *برای یک ایجنت* می‌نویسند. وقتی ابزار عوض می‌شود، از صفر شروع می‌کنند. این مخزن نشان می‌دهد چطور **یک بار بنویسید** و هر ایجنت هوش مصنوعی اصلی آن را بفهمد.
 
 راز کار: **سه لایه، یک منبع حقیقت.**
 
@@ -29,29 +29,40 @@
 
 ## 🗂️ ساختار کامل پروژه
 
+</div>
+
 ```
 your-project/
 │
-├── AGENTS.md                  ← 🌐 منبع حقیقت جهانی (خوانده می‌شود توسط همه ایجنت‌ها)
-├── CLAUDE.md                  ← فقط تنظیمات اختصاصی Claude (به AGENTS.md ارجاع می‌دهد)
+├── AGENTS.md                       ← 🌐 منبع حقیقت جهانی (همه ایجنت‌ها)
+├── AGENTS.fa.md                    ← 🌐 نسخه فارسی AGENTS.md
+├── CLAUDE.md                       ← تنظیمات اختصاصی Claude
+├── CLAUDE.fa.md                    ← نسخه فارسی CLAUDE.md
 │
-├── docs/                      ← مشترک: معماری، تصمیمات، مراجع
-├── scripts/                   ← مشترک: اسکریپت‌های build، deploy و ابزاری
-├── templates/                 ← مشترک: قالب‌های کد و مستندات
+├── docs/                           ← مشترک: معماری، تصمیمات، مراجع
+├── scripts/                        ← مشترک: اسکریپت‌های build و deploy
+├── templates/                      ← مشترک: قالب‌های کد و مستندات
 │
 ├── .claude/
-│   ├── settings.json          ← تنظیمات محلی Claude Code
+│   ├── settings.json               ← تنظیمات محلی Claude Code
+│   ├── settings.fa.json            ← نسخه فارسی (با توضیحات)
 │   └── skills/
-│       └── research.md        ← تعریف مهارت به سبک Claude
+│       ├── research.md             ← مهارت پژوهش (Claude)
+│       └── research.fa.md          ← نسخه فارسی مهارت
 │
 ├── .codex/
-│   ├── config.toml            ← پیکربندی Codex CLI
+│   ├── config.toml                 ← پیکربندی Codex CLI
+│   ├── config.fa.toml              ← نسخه فارسی (با توضیحات)
 │   └── agents/
-│       └── researcher.toml    ← تعریف زیر-ایجنت Codex
+│       ├── researcher.toml         ← زیر-ایجنت Codex
+│       └── researcher.fa.toml      ← نسخه فارسی زیر-ایجنت
 │
 └── .agents/
-    └── research.md            ← مهارت آینه‌شده (محتوای یکسان، فرمت جهانی)
+    ├── research.md                 ← مهارت جهانی
+    └── research.fa.md              ← نسخه فارسی مهارت جهانی
 ```
+
+<div dir="rtl">
 
 ---
 
@@ -71,16 +82,6 @@ your-project/
 ### `CLAUDE.md` — تنظیمات اختصاصی Claude
 این فایل را **کوتاه نگه دارید**. چون Claude Code هم `AGENTS.md` را می‌خواند، از تکرار محتوا خودداری کنید. فقط برای رفتارهای اختصاصی Claude مثل قوانین فشرده‌سازی، راهنمایی مجوزها یا مسیریابی زیر-ایجنت استفاده کنید.
 
-**`CLAUDE.md` پیشنهادی:**
-```markdown
-برای زمینه کامل پروژه، فایل AGENTS.md را بخوانید.
-
-## تنظیمات اختصاصی Claude Code
-- هنگام فشرده‌سازی، لیست کامل فایل‌های تغییریافته را حفظ کن
-- برای وظایف پژوهشی از زیر-ایجنت استفاده کن
-- از مهارت‌های .claude/skills/ برای انواع وظایف تکرارشونده استفاده کن
-```
-
 ---
 
 ## 🔄 تفاوت‌های فرمت فایل
@@ -91,7 +92,8 @@ your-project/
 | فرمت ایجنت/مهارت | `.md` (Markdown) | `.toml` |
 | فرمت پیکربندی | `settings.json` | `config.toml` |
 | سبک فراخوانی | خودکار بر اساس قوانین | مسیریابی صریح |
-| محیط اجرا | محلی در ترمینال | sandbox ابری (ناهمزمان) |
+| محیط اجرا | ترمینال محلی | sandbox ابری (ناهمزمان) |
+| AGENTS.md می‌خواند؟ | ✅ بله (از ۲۰۲۵) | ✅ بله (فایل اصلی) |
 
 ---
 
@@ -99,9 +101,9 @@ your-project/
 
 اگر یک ایجنت گیر کرد یا می‌خواهید در میان کار ابزار عوض کنید:
 
-1. از ایجنت فعلی بخواهید: *«یک خلاصه نشست تولید کن شامل: وضعیت فعلی، فایل‌های تغییریافته، و مراحل بعدی.»*
-2. خروجی را کپی کنید.
-3. آن را به‌عنوان اولین پیام در ایجنت دیگر پیست کنید.
+۱. از ایجنت فعلی بخواهید: *«یک خلاصه نشست تولید کن شامل: وضعیت فعلی، فایل‌های تغییریافته، و مراحل بعدی.»*
+۲. خروجی را کپی کنید.
+۳. آن را به‌عنوان اولین پیام در ایجنت دیگر paste کنید.
 
 هیچ زمینه‌ای از دست نمی‌رود. هیچ شروع مجددی لازم نیست.
 
@@ -111,6 +113,8 @@ your-project/
 
 پروژه Claude Code دارید و می‌خواهید پشتیبانی Codex اضافه کنید؟ این دستور را داخل Codex اجرا کنید:
 
+</div>
+
 ```
 این پروژه را در Claude Code ساختم و می‌خواهم در Codex هم کار کند.
 پروژه را بررسی کن و فایل‌های آداپتور Codex لازم را بساز.
@@ -118,6 +122,8 @@ your-project/
 و مهارت‌های موجود را به پوشه .agents/ منتقل کن.
 منطق نباید تکرار شود — فقط تطبیق داده شود.
 ```
+
+<div dir="rtl">
 
 ---
 
@@ -132,16 +138,17 @@ your-project/
 
 ---
 
-## 📁 فایل‌های قالب در این مخزن
+## 📁 فایل‌های این مخزن
 
-| فایل | هدف |
-|---|---|
-| [`AGENTS.md`](./AGENTS.md) | نمونه فایل زمینه جهانی پروژه |
-| [`CLAUDE.md`](./CLAUDE.md) | نمونه فایل تنظیمات کمینه Claude |
-| [`.claude/skills/research.md`](./.claude/skills/research.md) | نمونه مهارت Claude |
-| [`.codex/config.toml`](./.codex/config.toml) | نمونه پیکربندی Codex |
-| [`.codex/agents/researcher.toml`](./.codex/agents/researcher.toml) | نمونه زیر-ایجنت Codex |
-| [`.agents/research.md`](./.agents/research.md) | مهارت جهانی آینه‌شده |
+| فایل | نسخه انگلیسی | نسخه فارسی |
+|---|---|---|
+| زمینه جهانی پروژه | [`AGENTS.md`](./AGENTS.md) | [`AGENTS.fa.md`](./AGENTS.fa.md) |
+| تنظیمات Claude | [`CLAUDE.md`](./CLAUDE.md) | [`CLAUDE.fa.md`](./CLAUDE.fa.md) |
+| مهارت پژوهش (Claude) | [`.claude/skills/research.md`](./.claude/skills/research.md) | [`.claude/skills/research.fa.md`](./.claude/skills/research.fa.md) |
+| مهارت پژوهش (جهانی) | [`.agents/research.md`](./.agents/research.md) | [`.agents/research.fa.md`](./.agents/research.fa.md) |
+| پیکربندی Codex | [`.codex/config.toml`](./.codex/config.toml) | [`.codex/config.fa.toml`](./.codex/config.fa.toml) |
+| زیر-ایجنت Codex | [`.codex/agents/researcher.toml`](./.codex/agents/researcher.toml) | [`.codex/agents/researcher.fa.toml`](./.codex/agents/researcher.fa.toml) |
+| تنظیمات Claude Code | [`.claude/settings.json`](./.claude/settings.json) | [`.claude/settings.fa.json`](./.claude/settings.fa.json) |
 
 ---
 

@@ -30,25 +30,32 @@ The secret: **three layers, one source of truth.**
 ```
 your-project/
 │
-├── AGENTS.md                  ← 🌐 Universal source of truth (read by ALL agents)
-├── CLAUDE.md                  ← Claude-specific overrides only (references AGENTS.md)
+├── AGENTS.md                       ← 🌐 Universal source of truth (all agents)
+├── AGENTS.fa.md                    ← 🌐 Persian version of AGENTS.md
+├── CLAUDE.md                       ← Claude-specific overrides only
+├── CLAUDE.fa.md                    ← Persian version of CLAUDE.md
 │
-├── docs/                      ← Shared: architecture, decisions, references
-├── scripts/                   ← Shared: build, deploy, utility scripts
-├── templates/                 ← Shared: reusable code/doc templates
+├── docs/                           ← Shared: architecture, decisions, references
+├── scripts/                        ← Shared: build, deploy, utility scripts
+├── templates/                      ← Shared: reusable code/doc templates
 │
 ├── .claude/
-│   ├── settings.json          ← Claude Code local settings
+│   ├── settings.json               ← Claude Code local settings
+│   ├── settings.fa.json            ← Persian version (annotated)
 │   └── skills/
-│       └── research.md        ← Claude-flavored skill definition
+│       ├── research.md             ← Research skill (Claude)
+│       └── research.fa.md          ← Persian version of skill
 │
 ├── .codex/
-│   ├── config.toml            ← Codex CLI configuration
+│   ├── config.toml                 ← Codex CLI configuration
+│   ├── config.fa.toml              ← Persian version (annotated)
 │   └── agents/
-│       └── researcher.toml    ← Codex sub-agent definition
+│       ├── researcher.toml         ← Codex sub-agent definition
+│       └── researcher.fa.toml      ← Persian version of sub-agent
 │
 └── .agents/
-    └── research.md            ← Mirrored skill (same content, universal format)
+    ├── research.md                 ← Universal mirrored skill
+    └── research.fa.md              ← Persian version of universal skill
 ```
 
 ---
@@ -90,6 +97,7 @@ Read AGENTS.md for full project context.
 | Config format | `settings.json` | `config.toml` |
 | Invocation style | Auto-triggered by rules | Explicit routing |
 | Runs | Locally in terminal | Cloud sandbox (async) |
+| Reads AGENTS.md? | ✅ Yes (since 2025) | ✅ Yes (primary file) |
 
 ---
 
@@ -132,14 +140,15 @@ Ensure no logic is duplicated — just adapted.
 
 ## 📁 Template Files in This Repo
 
-| File | Purpose |
-|---|---|
-| [`AGENTS.md`](./AGENTS.md) | Example universal project context file |
-| [`CLAUDE.md`](./CLAUDE.md) | Example minimal Claude override file |
-| [`.claude/skills/research.md`](./.claude/skills/research.md) | Example Claude skill |
-| [`.codex/config.toml`](./.codex/config.toml) | Example Codex config |
-| [`.codex/agents/researcher.toml`](./.codex/agents/researcher.toml) | Example Codex sub-agent |
-| [`.agents/research.md`](./.agents/research.md) | Universal mirrored skill |
+| File | English | Persian |
+|---|---|---|
+| Universal project context | [`AGENTS.md`](./AGENTS.md) | [`AGENTS.fa.md`](./AGENTS.fa.md) |
+| Claude overrides | [`CLAUDE.md`](./CLAUDE.md) | [`CLAUDE.fa.md`](./CLAUDE.fa.md) |
+| Research skill (Claude) | [`.claude/skills/research.md`](./.claude/skills/research.md) | [`.claude/skills/research.fa.md`](./.claude/skills/research.fa.md) |
+| Research skill (universal) | [`.agents/research.md`](./.agents/research.md) | [`.agents/research.fa.md`](./.agents/research.fa.md) |
+| Codex config | [`.codex/config.toml`](./.codex/config.toml) | [`.codex/config.fa.toml`](./.codex/config.fa.toml) |
+| Codex sub-agent | [`.codex/agents/researcher.toml`](./.codex/agents/researcher.toml) | [`.codex/agents/researcher.fa.toml`](./.codex/agents/researcher.fa.toml) |
+| Claude Code settings | [`.claude/settings.json`](./.claude/settings.json) | [`.claude/settings.fa.json`](./.claude/settings.fa.json) |
 
 ---
 

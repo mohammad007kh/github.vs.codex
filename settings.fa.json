@@ -1,0 +1,17 @@
+{
+  "_comment": "تنظیمات Claude Code — توضیحات به فارسی",
+  "model": "claude-opus-4",
+  "context": {
+    "auto_compact": true,
+    "_compact_note": "هنگام فشرده‌سازی، موارد زیر را حفظ کن",
+    "preserve_on_compact": ["modified_files", "current_task", "architecture_decisions"]
+  },
+  "permissions": {
+    "allow_file_write": true,
+    "allow_shell": true,
+    "confirm_before_delete": true,
+    "_note": "قبل از هر حذف، تایید بگیر"
+  },
+  "skills_dir": ".claude/skills",
+  "agents_dir": ".claude/agents"
+}
