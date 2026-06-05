@@ -1,0 +1,26 @@
+# Codex Sub-Agent: Researcher
+# This is the Codex equivalent of .claude/skills/research.md
+
+[agent]
+name = "researcher"
+description = "Investigates topics, libraries, or APIs before implementation decisions."
+
+[trigger]
+# Explicit routing — Codex requires you to call this agent by name or route to it
+keywords = ["research", "investigate", "compare", "tradeoffs", "best library for"]
+
+[behavior]
+use_web_search = true
+save_findings = true
+findings_path = "docs/research"
+
+[output]
+format = """
+## Research: {topic}
+
+**Question:** {question}
+**Recommendation:** {recommendation}
+**Rationale:** {rationale}
+**Alternatives considered:** {alternatives}
+**Sources:** {sources}
+"""

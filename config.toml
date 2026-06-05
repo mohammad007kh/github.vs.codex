@@ -1,0 +1,23 @@
+# Codex CLI Configuration
+# https://github.com/openai/codex
+
+[model]
+name = "codex-1"
+temperature = 0.2
+
+[context]
+# Codex reads AGENTS.md automatically — no need to specify it here
+skills_dir = ".agents"
+agents_dir = ".codex/agents"
+
+[sandbox]
+# Codex runs in an isolated cloud sandbox by default
+# These settings apply to the Codex CLI local mode
+allow_shell = true
+allow_file_write = true
+confirm_before_delete = true
+
+[output]
+# How Codex should deliver results
+prefer_pull_request = false   # Set true for async cloud workflows
+commit_message_style = "conventional"   # conventional | descriptive | short

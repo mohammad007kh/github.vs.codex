@@ -1,0 +1,14 @@
+{
+  "model": "claude-opus-4",
+  "context": {
+    "auto_compact": true,
+    "preserve_on_compact": ["modified_files", "current_task", "architecture_decisions"]
+  },
+  "permissions": {
+    "allow_file_write": true,
+    "allow_shell": true,
+    "confirm_before_delete": true
+  },
+  "skills_dir": ".claude/skills",
+  "agents_dir": ".claude/agents"
+}
